@@ -1,0 +1,122 @@
+/**
+ * ADDITIONAL STYLES
+ * 
+ * These styles are for the injected UI elements (notifications, badges, tooltips)
+ * They provide a consistent, modern look across different support systems.
+ */
+
+/* Tooltip style for additional information */
+.ticket-auto-closer-tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace;
+  pointer-events: none;  /* Allow clicking through tooltip */
+  z-index: 10001;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.2s;
+}
+
+/* Pulldown animation for notifications */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide out animation for dismissals */
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Pulsing animation for attention-grabbing */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.ticket-auto-closer-pulse {
+  animation: pulse 1.5s ease-in-out 2;
+}
+
+/* Fade in animation for badges */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+.ticket-auto-closer-badge {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .ticket-auto-closer-notification {
+    top: auto !important;
+    bottom: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    max-width: calc(100% - 20px) !important;
+  }
+}
+
+/* Dark mode support (respects system preferences) */
+@media (prefers-color-scheme: dark) {
+  .ticket-auto-closer-tooltip {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+  }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+  .ticket-auto-closer-notification {
+    border: 2px solid currentColor;
+    box-shadow: none;
+  }
+}
+
+/* Reduced motion preference - disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .ticket-auto-closer-notification,
+  .ticket-auto-closer-pulse {
+    animation: none;
+  }
+}
+
+/* Print styles - hide when printing */
+@media print {
+  .ticket-auto-closer-notification,
+  .ticket-auto-closer-tooltip,
+  .ticket-auto-closer-badge {
+    display: none !important;
+  }
+}

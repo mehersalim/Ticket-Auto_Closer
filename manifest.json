@@ -1,0 +1,59 @@
+{
+  // Manifest version 3 is the latest Chrome extension format
+  // Required - tells Chrome which version of the extension API to use
+  "manifest_version": 3,
+  
+  // Display name shown in Chrome toolbar and extensions page
+  "name": "Ticket Auto-Closer",
+  
+  // Version number for updates (follows semantic versioning)
+  "version": "1.0",
+  
+  // Short description shown in Chrome Web Store and extensions page
+  "description": "Automatically closes support tickets after 7 days",
+  
+  // Permissions declare what Chrome APIs the extension needs access to
+  // These trigger privacy warnings to users during installation
+  "permissions": [
+    "storage",    // Allows saving data locally (ticket activity timestamps)
+    "alarms",     // Enables scheduled background tasks (checking tickets)
+    "activeTab"   // Grants temporary access to the currently active tab
+  ],
+  
+  // Host permissions specify which websites the extension can access
+  // HTTPS required for security - Chrome blocks HTTP requests
+  "host_permissions": [
+    "https://*.zendesk.com/*",      // Zendesk support platform
+    "https://*.freshdesk.com/*",    // Freshdesk support platform
+    "https://your-support-system.com/*"  // Replace with your actual support system URL
+  ],
+  
+  // Background service worker runs continuously in the background
+  // Handles timers, storage, and message routing
+  "background": {
+    "service_worker": "background.js"  // Single file that runs as background script
+  },
+  
+  // Browser action adds an icon to Chrome's toolbar
+  "action": {
+    "default_popup": "popup.html",        // HTML that opens when icon is clicked
+    "default_icon": {                      // Icon sizes for different display contexts
+      "16": "icons/icon16.png",   // Toolbar icon (small)
+      "48": "icons/icon48.png",   // Extensions page icon (medium)
+      "128": "icons/icon128.png"  // Chrome Web Store icon (large)
+    }
+  },
+  
+  // Content scripts run within web pages (access DOM but isolated environment)
+  "content_scripts": [
+    {
+      // URLs where this script will automatically run
+      "matches": [
+        "https://*.zendesk.com/agent/tickets/*",      // Zendesk ticket pages
+        "https://*.freshdesk.com/a/tickets/*",        // Freshdesk ticket pages
+        "https://your-support-system.com/tickets/*"   // Your custom system
+      ],
+      "js": ["content.js"]  // JavaScript file to inject into the page
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    POPUP HTML
+    This dialog appears when user clicks the extension icon in toolbar.
+    Shows current ticket status and provides manual controls.
+  -->
+  <style>
+    /* CSS reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 350px;          /* Fixed width for popup */
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    /* Header gradient section */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      margin: 5px 0 0;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    
+    /* Main content area */
+    .content {
+      padding: 20px;
+    }
+    
+    /* Information box styling */
+    .info-box {
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    
+    /* Individual info rows */
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    
+    .info-label {
+      font-weight: bold;
+      color: #666;
+    }
+    
+    .info-value {
+      color: #333;
+      font-family: monospace;
+    }
+    
+    /* Status color classes */
+    .status-active {
+      color: #4caf50;
+      font-weight: bold;
+    }
+    
+    .status-warning {
+      color: #ff9800;
+      font-weight: bold;
+    }
+    
+    .status-closed {
+      color: #666;
+      font-weight: bold;
+    }
+    
+    /* Button styles */
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    
+    button:hover {
+      background: #5a67d8;
+      transform: translateY(-1px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button.secondary {
+      background: #48bb78;
+    }
+    
+    button.secondary:hover {
+      background: #38a169;
+    }
+    
+    /* Footer section */
+    .footer {
+      background: #f9f9f9;
+      padding: 10px;
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+    
+    /* Progress bar for visual indicator */
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎫 Ticket Auto-Closer</h1>
+    <p>Automatically close inactive tickets after 7 days</p>
+  </div>
+  
+  <div class="content">
+    <div class="info-box">
+      <div class="info-item">
+        <span class="info-label">Current Ticket:</span>
+        <span class="info-value" id="currentTicket">None</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Status:</span>
+        <span class="info-value" id="ticketStatus">Not tracked</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Inactive For:</span>
+        <span class="info-value" id="inactiveTime">-</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Time to Close:</span>
+        <span class="info-value" id="timeRemaining">-</span>
+      </div>
+      <!-- Visual progress bar shows how close ticket is to closing -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+    
+    <!-- Manual control buttons -->
+    <button id="manualCheckBtn">🔍 Force Check Tickets</button>
+    <button id="settingsBtn" class="secondary">⚙️ Settings</button>
+  </div>
+  
+  <div class="footer">
+    Ticket Auto-Closer v1.0 | Auto-closes after 7 days without activity
+  </div>
+  
+  <!-- Script loads after DOM is ready -->
+  <script src="popup.js"></script>
+</body>
+</html>
