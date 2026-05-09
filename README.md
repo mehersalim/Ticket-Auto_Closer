@@ -1,16 +1,16 @@
-# Ticket Auto-Closer
+# Ticket Auto Closer
 
 A Chrome extension that automatically monitors and closes inactive support tickets after 7 days of no user activity.
 
 ## Features
 
-- 🔍 **Automatic Ticket Detection** - Identifies ticket IDs from URLs across multiple support platforms
-- ⏱️ **Activity Tracking** - Monitors user interactions (clicks, typing, scrolling) to reset inactivity timers
-- 🔔 **Smart Notifications** - Displays non-intrusive notifications when tickets become eligible for closure
-- 🎯 **One-Click Closing** - Automatically clicks the close button when user confirms
-- 📊 **Real-time Status** - Popup interface shows current ticket status, time remaining, and visual progress bar
-- 💾 **Persistent Storage** - Tracks ticket activity across browser restarts using Chrome's storage API
-- 🔄 **Periodic Checks** - Background service checks all tracked tickets every hour
+- **Automatic Ticket Detection** - Identifies ticket IDs from URLs across multiple support platforms
+- **Activity Tracking** - Monitors user interactions (clicks, typing, scrolling) to reset inactivity timers
+- **Smart Notifications** - Displays non-intrusive notifications when tickets become eligible for closure
+- **One-Click Closing** - Automatically clicks the close button when user confirms
+- **Real-time Status** - Popup interface shows current ticket status, time remaining, and visual progress bar
+- **Persistent Storage** - Tracks ticket activity across browser restarts using Chrome's storage API
+- **Periodic Checks** - Background service checks all tracked tickets every hour
 
 ## Supported Platforms
 
