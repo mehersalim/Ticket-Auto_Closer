@@ -1,6 +1,7 @@
 /**
- * BACKGROUND SERVICE WORKER
- * 
+ * Developer: Meher Salim
+ * File: background.js
+ * Description:
  * This script runs continuously in the background, even when no Chrome windows are open.
  * It handles:
  * - Periodic ticket checks using Chrome alarms
