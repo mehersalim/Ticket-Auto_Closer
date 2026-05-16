@@ -1,6 +1,7 @@
 /**
- * POPUP SCRIPT
- * 
+ * Developer: Meher Salim
+ * File: popup.js
+ * Description:
  * This script runs when the extension icon is clicked and the popup opens.
  * It displays real-time information about the current ticket and provides
  * manual controls for checking and closing tickets.
