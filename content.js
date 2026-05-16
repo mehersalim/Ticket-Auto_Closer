@@ -1,6 +1,7 @@
 /**
- * CONTENT SCRIPT
- * 
+ * Developer: Meher Salim
+ * File: background.js
+ * Description:
  * This script runs within the context of a web page (ticket page).
  * It has access to the DOM but runs in an isolated environment.
  * 
